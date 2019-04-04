@@ -1,12 +1,18 @@
 // Given an array of ints a and an int k, return if there exists a pair (x, y) in a such that x + y = k.
 // This can be solved in O(nlog(n)) time trivially, or even in O(n) if you use another data structure
 
-function hasPairSumToK(a: number[], k: number): boolean {
-    
+function hasPairSumToK(a: number[], k: number):boolean {
+    const s = new Set([]);
+
+    for (let i = 0; i < a.length; i++) {
+        if(s.has(k-a[i])){
+            return true
+        }        
+        s.add(a[i])
+    }
+    return false
+      
 }
-
-
-
 
 
 // TESTS don't touch them
@@ -27,4 +33,3 @@ test([[1, 2, 3, 4, 96, -5], -4], true);
 test([[-1, -2, -3], 2], false);
 test([[1, 2, 3], 9], false);
 test([[7, 8, 9], 6],  false);
-
